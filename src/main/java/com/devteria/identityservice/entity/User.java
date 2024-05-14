@@ -5,6 +5,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -21,6 +22,8 @@ public class User {
      String firstName;
      String lastName;
      LocalDate dob;
+//     Set<String> roles;
+    String roles;
 
     @PrePersist
     public void generateId() {
