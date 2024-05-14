@@ -11,7 +11,9 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApiResponse <T> {
+     @Builder.Default
      Integer code = 1000;
      String message;
      T result;
+
 }

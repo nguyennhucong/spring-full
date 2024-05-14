@@ -27,9 +27,11 @@ public class UserController {
 
     @PostMapping
     ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request){  //@Valid sẽ chekdđiều kiện validation
-        return ApiResponse.<UserResponse>builder()
+        ApiResponse apiResponse = ApiResponse.<UserResponse>builder()
                 .result(userService.createUser(request))
                 .build();
+        log.info("apiResponse" + apiResponse);
+        return apiResponse;
     }
 
     @GetMapping
@@ -63,6 +65,12 @@ public class UserController {
         userService.deleteUser(userId);
         return ApiResponse.<String>builder()
                 .result("User has been deleted")
+                .build();
+    }
+    @GetMapping("/myInfo")
+    ApiResponse<UserResponse> getMyInfo(){
+        return ApiResponse.<UserResponse>builder()
+                .result(userService.getMyInfo())
                 .build();
     }
 }
